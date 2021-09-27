@@ -1,24 +1,66 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="index.css">
-        <title> project 3</title>
-    </head>
-    <body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dogipidea</title>
 
-        <main>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@17/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+    ></script>
+  </head>
+  <body>
+    <div id="root">I am not rendering.</div>
 
-            <div class="first"><p>Test 1</p> </div>
-            <div class="second"><p>Test 2</p> </div>
-            <div class="third"><p>Test 3</p> </div>
-            <div class="fourth"><p>Test 4</p> </div>
-            <div class="fifth"><p>Test 5</p> </div>
-            <div class="sixth"><p>Test 6</p> </div>
+    <script>
+      const Dog = props => {
+        return React.createElement('div', {}, [
+          React.createElement('h3', {}, props.name),
+          React.createElement('h3', {}, props.weight),
+          React.createElement('h3', {}, props.height),
+        ])
+      }
 
-        </main>
-        
-    </body>
+      const App = () => {
+        var arr = [1, 2, 3, 4]
+        return React.createElement(
+          'div', // tag
+          { id: 'website-title' }, // attributes with the element
+          [
+            React.createElement('h3', {}, 'Dog Website'),
+            ...[arr].map(item => React.createElement('h1', {}, item)),
+            React.createElement(Dog, {
+              name: 'Bull Terrier',
+              weight: '50.70 Kg',
+              breed: 'Terrier',
+            }),
+            React.createElement(Dog, {
+              name: 'PitBull',
+              weight: '50.70 Kg',
+              breed: 'Bull',
+            }),
+            React.createElement(Dog, {
+              name: 'Puppy',
+              weight: '5.70 Kg',
+              breed: 'husky',
+            }),
+          ] // content can be another component also.
+        )
+      }
 
+      ReactDOM.render(
+        React.createElement(
+          // component to render
+          App
+        ),
+        document.getElementById('root') // place to render
+      )
+    </script>
+  </body>
 </html>
